@@ -36,5 +36,17 @@ Where:
 6. **Execute and Display Results:** Run the Scilab script (`.sce`) to display the maximum radar range in meters and kilometers.
 
 ---
+TABULATION
+<img width="1599" height="899" alt="image" src="https://github.com/user-attachments/assets/d3a76afa-cdb7-4f6e-8d64-58488bfa064c" />
+
 
 ## MODEL GRAPH
+<img width="1599" height="899" alt="image" src="https://github.com/user-attachments/assets/1574c0ae-2929-49ca-8fbe-a2c5724214eb" />
+
+CALCULATION
+<img width="899" height="1599" alt="image" src="https://github.com/user-attachments/assets/25901c49-7f1a-401f-bbdd-551ca80e77e3" />
+
+RESULT: Thus, the maximum range of the RADAR system using radar equation verified 
+
+
+
