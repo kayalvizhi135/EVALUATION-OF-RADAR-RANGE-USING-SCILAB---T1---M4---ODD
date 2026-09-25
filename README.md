@@ -25,7 +25,58 @@ Where:
 * $\sigma$ : Radar cross-section of the target ($\text{m}^2$)
 * $P_{\min}$ : Minimum detectable signal power of the receiver (W)
 
----
+## CODE
+clc;
+clear;
+close;
+
+// Constants
+Pt = 1000;          // Transmitted power (W)
+Gt = 20;            // Transmitting antenna gain
+Gr = 20;            // Receiving antenna gain
+lambda = 0.03;      // Wavelength (m)
+sigma = 1;          // Radar cross section
+
+// Target range
+R = 1:1000;
+
+// Radar received power
+Pr = (Pt*Gt*Gr*lambda^2*sigma) ./ ((4*%pi)^3 * R.^4);
+
+// Convert to dBm
+Pr_dBm = 10*log10(Pr*1000);
+
+// Plot 1: Received Power vs Target Range
+figure(1);
+plot(R, Pr_dBm);
+xlabel("Range (m)");
+ylabel("Received Power (dBm)");
+title("RADAR Received Power vs Target Range");
+xgrid();
+
+// Plot 2: Maximum Radar Range vs Transmitted Power
+P = 1:1000;
+
+Rmax = ((P*Gt*Gr*lambda^2*sigma) ./ ((4*%pi)^3*Pr(100))).^(1/4);
+
+figure(2);
+plot(P, Rmax);
+xlabel("Transmitted Power (W)");
+ylabel("Maximum Range (m)");
+title("Maximum RADAR Range vs Transmitted Power");
+xgrid();
+
+// Plot 3: Radar Range vs Antenna Gain
+G = 10:40;
+
+Rgain = ((Pt*G.^2*lambda^2*sigma) ./ ((4*%pi)^3*Pr(100))).^(1/4);
+
+figure(3);
+plot(G, Rgain);
+xlabel("Antenna Gain");
+ylabel("Maximum Range (m)");
+title("RADAR Range vs Antenna Gain");
+xgrid();
 
 ## Procedure / Algorithm
 1. **Set Up the Scilab Environment:** Launch the Scilab workspace/console.
@@ -36,17 +87,17 @@ Where:
 6. **Execute and Display Results:** Run the Scilab script (`.sce`) to display the maximum radar range in meters and kilometers.
 
 ---
-TABULATION
-<img width="1599" height="899" alt="image" src="https://github.com/user-attachments/assets/d3a76afa-cdb7-4f6e-8d64-58488bfa064c" />
 
+## TABULATION 
+<img width="1173" height="679" alt="image" src="https://github.com/user-attachments/assets/2ed6d43e-2ee2-448e-af66-c284edb7719c" />
 
-## MODEL GRAPH
-<img width="1599" height="899" alt="image" src="https://github.com/user-attachments/assets/1574c0ae-2929-49ca-8fbe-a2c5724214eb" />
+## CALCULATION 
+<img width="1080" height="1495" alt="image" src="https://github.com/user-attachments/assets/155c9778-d675-48c1-a27c-451d237ecd0d" />
 
-CALCULATION
-<img width="899" height="1599" alt="image" src="https://github.com/user-attachments/assets/25901c49-7f1a-401f-bbdd-551ca80e77e3" />
+## OUTPUT
+<img width="809" height="628" alt="image" src="https://github.com/user-attachments/assets/c02b4d83-8dd9-4598-9062-539adc691f60" />
+<img width="1237" height="653" alt="image" src="https://github.com/user-attachments/assets/2d9fa405-b0cf-413f-80db-68f18d6013cd" />
+<img width="821" height="627" alt="image" src="https://github.com/user-attachments/assets/901aabc3-ee36-43f5-aa7d-475dc89ac47c" />
 
-RESULT: Thus, the maximum range of the RADAR system using radar equation verified 
-
-
-
+## RESULT
+Thus, the maximum range of radar system using radar range equation is verified.
